@@ -1,10 +1,33 @@
 from fastapi import FastAPI
+import uvicorn
+
+
 
 app = FastAPI()
 
+students = [{
+    "userName":"Muhammad Afzal",
+    "rollNo": 126016
+},
+            {
+    "userName":"Mian Haroon",
+    "rollNo": 126017
+}
+            ]
+
 @app.get("/students")
 def getStudents():
-    print(f"Getting all students...")
-    return {"message": "Hello, this is a sample response for getting all the students."}
+    return students
+@app.get("/addStudent")
+def addStudent(userName:str, rollNo:str):
+    global students
+    students.append({"userName":userName, "rollNo":rollNo})
+    return students
     
-# Add a new student to the database
+@app.get( "/student/{rollNo}") # Get the student by Roll No using (variable Path) variable path is a method of getting data from frontend to the backend.
+def getStudentByRollNo(rollNo):
+    print(" get student Roll No", rollNo)
+    return rollNo
+
+def start():
+    uvicorn.run("students_crud.main:app",host="127.0.0.1", port=8181, reload=True)
