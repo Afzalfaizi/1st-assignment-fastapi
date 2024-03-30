@@ -12,7 +12,15 @@ students = [{
             {
     "userName":"Mian Haroon",
     "rollNo": 126017
-}
+},
+            {
+                "userName":"Jawad Ahmad",
+                "rollNo": 126018
+            },
+            {
+                "userName":"Shaikh Zaid",
+                "rollNo": 126019
+            }
             ]
 
 @app.get("/students")
