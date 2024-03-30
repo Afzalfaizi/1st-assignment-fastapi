@@ -26,9 +26,17 @@ students = [{
 @app.get("/students")
 def getStudents():
     return students
-@app.get("/addStudent")
+
+@app.get("/students/{126016}")
+def get_student(rollNo: int):
+    for student in students:
+        if student["Student_ID"] == rollNo:
+            return student
+    return {"message": "Student not found"}
+
+
+@app.post("/addStudent")
 def addStudent(userName:str, rollNo:str):
-    global students
     students.append({"userName":userName, "rollNo":rollNo})
     return students
     
