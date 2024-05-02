@@ -28,5 +28,21 @@ def getStudents():
     return students
 
 
+# Path Variable 
+# Receiving Data From Front-End to the Back-End through Path Variable 
+@app.get("/getrollno/{rollNo}")
+def getRollNo(rollNo):
+    print("The Roll No of Muhammad Afzal (Student of Web Development) is", rollNo)
+    return rollNo 
+
+# Query Parameter 
+# Receiving Data From Front-End to the Back-End through Query Parameter
+
+@app.get("/getfromdata")
+def getRollNo(userName:str, rollNo:str):
+    print("Student Name is", userName, "&", "Student Roll no is", rollNo)
+    return "Students Addmissions form"
+
+
 def start():
     uvicorn.run("students_crud.main:app",host="127.0.0.1", port=8181, reload=True)
