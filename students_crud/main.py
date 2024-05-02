@@ -40,6 +40,38 @@ def getRollNo(rollNo):
     return rollNo 
 # Write a programme that will return the data of the student whose Roll no is given by the user using path variable.
 
+@app.get("/students/{rollNo}")
+def get_student(rollNo: int):
+    for student in students:
+        if student["rollNo"] == rollNo:
+            return student
+    return {"error": "Student not found"}
+
+@app.get("/addStudent")
+def addStudents(userName:str, rollNo:int, course:str, semester:int, year:int, email:str, phone:str, address:str):
+    global students
+    students.append({
+        "userName":userName,
+        "rollNo": rollNo,
+        "course": course,
+        "semester": semester,
+        "year": year,
+        "email": email,
+        "phone": phone,
+        "address": address
+    })
+    return students
+# Delete a students from object
+
+@app.delete("/students/{rollNo}")
+def delete_student(rollNo: int):
+    global students
+    for i, student in enumerate(students):
+        if student["rollNo"] == rollNo:
+            del students[i]
+    return {"message": "Student deleted successfully"}
+
+
 # Query Parameter 
 # Receiving Data From Front-End to the Back-End through Query Parameter
 
@@ -49,5 +81,5 @@ def getRollNo(userName:str, rollNo:str):
     return "Students Addmissions form"
 
 
-def start():
-    uvicorn.run("students_crud.main:app",host="127.0.0.1", port=8181, reload=True)
+# def start():
+#     uvicorn.run("students_crud.main:app",host="127.0.0.1", port=8181, reload=True)
