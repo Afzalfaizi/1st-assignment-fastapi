@@ -83,3 +83,9 @@ def getRollNo(userName:str, rollNo:str):
 
 # def start():
 #     uvicorn.run("students_crud.main:app",host="127.0.0.1", port=8181, reload=True)
+
+
+# Pydantic 
+# Annotated
+ # Pydantic Dict ki specific item ko different type deny k liye use krty hain.
+ # Annotated Data validation  k liye use krty hain. 
