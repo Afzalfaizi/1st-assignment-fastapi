@@ -47,7 +47,7 @@ def get_student(rollNo: int):
             return student
     return {"error": "Student not found"}
 
-@app.get("/addStudent")
+@app.get("/addStudent") # Recieving Data from front-end to back-end through query Parameters.
 def addStudents(userName:str, rollNo:int, course:str, semester:int, year:int, email:str, phone:str, address:str):
     global students
     students.append({
