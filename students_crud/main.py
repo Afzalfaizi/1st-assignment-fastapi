@@ -1,5 +1,6 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Body
 import uvicorn
+from pydantic import BaseModel
 
 
 
@@ -63,7 +64,7 @@ def addStudents(userName:str, rollNo:int, course:str, semester:int, year:int, em
     return students
 # Delete a students from object
 
-@app.delete("/students/{rollNo}")
+@app.delete("/deleteStudent/{rollNo}")
 def delete_student(rollNo: int):
     global students
     for i, student in enumerate(students):
@@ -78,14 +79,25 @@ def delete_student(rollNo: int):
 @app.get("/getformdata")
 def getRollNo(userName:str, rollNo:str):
     print("Student Name is", userName, "&", "Student Roll no is", rollNo)
-    return "Students Addmissions form"
+    return "Student Data Add Successfully"
 
 
-# def start():
-#     uvicorn.run("students_crud.main:app",host="127.0.0.1", port=8181, reload=True)
+def start():
+    uvicorn.run("students_crud.main:app",host="127.0.0.1", port=8080, reload=True)
 
 
 # Pydantic 
 # Annotated
+# Request Body parameters (Secure way of receiving data) for security purposes.
  # Pydantic Dict ki specific item ko different type deny k liye use krty hain.
  # Annotated Data validation  k liye use krty hain. 
+ 
+ # Request Body Params
+class Item(BaseModel):
+    id:int
+    title:str
+    description:str
+
+@app.get("/student")
+def MainRoute(item:Item = None):
+    return item 
