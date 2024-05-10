@@ -3,10 +3,24 @@ import uvicorn
 from pydantic import BaseModel
 from sqlmodel import SQLModel, Field, create_engine
 
+# # ****************************************************************************************#
 
+#  --------------------------------  Full Stack Todo App  ---------------------------------
+
+# # ****************************************************************************************#
 
 app = FastAPI()
 
+
+def start():
+    uvicorn.run("students_crud.main:app",host="127.0.0.1", port=8080, reload=True)
+    
+    
+    
+    
+    
+    
+    
 # students = [{
 #     "userName":"Muhammad Afzal",
 #     "rollNo": 126016,
@@ -92,14 +106,3 @@ app = FastAPI()
 # @app.get("/student")
 # def MainRoute(item:Item = None):
 #     return item 
-
-# # ****************************************************************************************#
-
-#  ------------------------  Full Stack Todo App Starts from Here --------------------------
-
-# # ****************************************************************************************#
-
-
-
-def start():
-    uvicorn.run("students_crud.main:app",host="127.0.0.1", port=8080, reload=True)
