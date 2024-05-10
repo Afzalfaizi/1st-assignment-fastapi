@@ -1,6 +1,7 @@
 from fastapi import FastAPI, Body
 import uvicorn
 from pydantic import BaseModel
+from sqlmodel import SQLModel, Field, create_engine
 
 
 
