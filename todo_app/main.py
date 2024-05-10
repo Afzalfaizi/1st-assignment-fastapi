@@ -7,6 +7,11 @@ from sqlmodel import SQLModel, Field, create_engine
 #  --------------------------------  Full Stack Todo App  ---------------------------------
 # # ****************************************************************************************#
 
+app = FastAPI()
+
+connection_string = 'postgressql://postgres.aaukslgprmevbkiwnjvl:Ifltp3*789258@aws-0-ap-southeast-1.pooler.supabase.com:5432/postgres '
+connection = create_engine(connection_string)
+
 
 class students(SQLModel, table = True):
     id: int = Field(default=None, primary_key=True) 
@@ -14,7 +19,8 @@ class students(SQLModel, table = True):
     description: str
     is_completed: bool 
 
-app = FastAPI()
+SQLModel.metadata.create_all(connection)
+
 
 
 
