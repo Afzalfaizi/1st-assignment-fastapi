@@ -4,23 +4,27 @@ from pydantic import BaseModel
 from sqlmodel import SQLModel, Field, create_engine
 
 # # ****************************************************************************************#
-
 #  --------------------------------  Full Stack Todo App  ---------------------------------
-
 # # ****************************************************************************************#
 
+
+class students(SQLModel, table = True):
+    id: int = Field(default=None, primary_key=True) 
+    name: str
+    description: str
+    is_completed: bool 
+
 app = FastAPI()
+
+
+
 
 
 def start():
     uvicorn.run("students_crud.main:app",host="127.0.0.1", port=8080, reload=True)
     
     
-    
-    
-    
-    
-    
+
 # students = [{
 #     "userName":"Muhammad Afzal",
 #     "rollNo": 126016,
