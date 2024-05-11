@@ -91,5 +91,5 @@ class Item(BaseModel):
 def MainRoute(item:Item = None):
     return item 
 
-def start():
-    uvicorn.run("students_crud.main:app",host="127.0.0.1", port=8080, reload=True)
+# def start():
+#     uvicorn.run("todo_app.main:app",host="127.0.0.1", port=8080, reload=True)
